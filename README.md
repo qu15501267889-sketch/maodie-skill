@@ -52,9 +52,12 @@
 
 ```
 maodie/                      ← 耄耋主技能
-├── SKILL.md                 ← 核心人格、心理分析框架、V2.0 记忆系统
-├── memory/                  ← 长期记忆系统（本地，不上传）
-└── references/
+├── SKILL.md                 ← 核心人格、心理分析框架
+├── memory/                  ← 长期记忆系统（本地存储，不上传）
+│   ├── README.md            ← 说明文件
+│   └── sessions/.gitkeep    ← 对话存档目录（占位）
+├── references/              ← 心理分析参考文件
+└── qimen-dunjia/            ← 奇门遁甲子技能（仅计算，不输出）
 ├── references/              ← 心理分析参考文件
 │   ├── chinese_culture.md
 │   ├── conversation_style.md
