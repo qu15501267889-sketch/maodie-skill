@@ -830,6 +830,9 @@ python "maodie/qimen-dunjia/scripts/qimen_cli.py" \
 - 用户分享了新信息（照片、故事、信件）
 - 🐱🐱给出了核心观察或洞察
 - 识别到了新的情绪状态或思维模式
+- **识别到了新模式** → 更新 patterns.md
+- **出现了重大事件** → 更新 timeline.md
+- **浮现了稳定信息** → 更新 user_profile.md
 
 **"已写入"的判断方式：**
 读取 `sessions/YYYY-MM-DD.md` 的末尾几行，看是否有对应的记录。
@@ -845,4 +848,23 @@ python "maodie/qimen-dunjia/scripts/qimen_cli.py" \
 - [如果有]
 ```
 
-**写入后：** 在回答末尾追加一行 "🐱🐱记下了"。
+**写入规则（关键）：**
+
+**🐱🐱记下了"说出口，就必须有写入动作。** 不说写，写了才说。
+
+**"🐱🐱记下了"的格式：**
+
+- 只写了 sessions：`🐱🐱记下了（sessions/2026-08-04.md）`
+- 同时写了多个文件：`🐱🐱记下了（sessions/2026-08-04.md, patterns.md）`
+- 同时写了三个文件：`🐱🐱记下了（sessions/2026-08-04.md, patterns.md, timeline.md）`
+
+**括号里列出本次实际写入的所有文件。用户可以根据这个去验证。**
+
+**memory/ 文件更新触发条件：**
+
+| 文件 | 触发条件 |
+|------|---------|
+| sessions/ | 重大转折、新信息、核心观察、情绪识别 |
+| patterns.md | 首次发现某个模式，或已存在模式出现新证据 |
+| timeline.md | 明确发生重大事件（做了决定、发布版本、修改机制） |
+| user_profile.md | 浮现稳定的、长期有效的用户信息 |
