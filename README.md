@@ -53,11 +53,8 @@
 ```
 maodie/                      ← 耄耋主技能
 ├── SKILL.md                 ← 核心人格、心理分析框架、V2.0 记忆系统
-├── memory/                  ← 长期记忆系统（V2.0 新增）
-│   ├── user_profile.md
-│   ├── sessions/            ← 对话存档（自动写入）
-│   ├── patterns.md          ← 模式识别
-│   └── timeline.md          ← 事件时间线
+├── memory/                  ← 长期记忆系统（本地，不上传）
+└── references/
 ├── references/              ← 心理分析参考文件
 │   ├── chinese_culture.md
 │   ├── conversation_style.md
