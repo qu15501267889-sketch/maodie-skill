@@ -38,9 +38,8 @@ import os, json, random, datetime
 from pathlib import Path
 
 # 概率控制（可调）
-TRIGGER_PROBABILITY = 0.02  # 2% 概率触发
+TRIGGER_PROBABILITY = 0.30  # 30% 概率触发
 COOLDOWN_MINUTES = 12       # 最近12分钟有消息则跳过
-MAX_DAILY_MESSAGES = 2      # 每天最多发几条
 
 def get_skill_dir():
     """获取 maodie 技能目录路径"""
