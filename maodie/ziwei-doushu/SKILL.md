@@ -30,7 +30,7 @@ description: 紫微斗数排盘子技能。仅由耄耋调用，做排盘计算�
 
 ### 第二步：调用排盘指令
 
-耄耋将收集到的信息整理后，调用 `scripts/ziwei_verify.py` 进行排盘计算。
+耄耋将收集到的信息整理后，调用 `scripts/ziwei_main.py` 进行排盘计算。
 
 ### 第三步：返回结果
 
@@ -57,7 +57,7 @@ description: 紫微斗数排盘子技能。仅由耄耋调用，做排盘计算�
 | `references/stars.md` | 14主星+辅星解析 |
 | `references/sihua.md` | 四化表 |
 | `references/patterns.md` | 格局判断 |
-| `scripts/ziwei_verify.py` | 排盘脚本 |
+| `scripts/ziwei_main.py` | 排盘脚本 |
 
 ## 注意事项
 
