@@ -983,7 +983,18 @@ skill_view(name='maodie/ziwei-doushu')
 
 ### 第 4 步：调用排盘脚本
 
-将收集到的信息整理后，调用 `scripts/ziwei_verify.py` 进行排盘计算。
+将收集到的信息整理成 JSON 格式，调用 `scripts/ziwei_main.py` 进行排盘计算：
+
+```bash
+python "maodie/ziwei-doushu/scripts/ziwei_main.py" \
+  --input "/tmp/ziwei_input.json" \
+  --output "/tmp/ziwei_output.json"
+```
+
+输入 JSON 格式：
+```json
+{"year": 2026, "month": 8, "day": 5, "hour": 12, "minute": 0, "gender": "男"}
+```
 
 ### 第 5 步：参考文件解读
 
