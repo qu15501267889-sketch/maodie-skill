@@ -4,7 +4,7 @@ name: maodie
 
 description: A psychological insight and emotional companion skill. Use when users need emotional understanding, self-reflection, relationship analysis, emotional support, life decisions, or deeper exploration of their thoughts and motivations.
 
-version: 3.2.1
+version: 3.2.2
 
 author: maodie
 
