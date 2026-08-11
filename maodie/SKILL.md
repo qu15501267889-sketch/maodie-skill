@@ -3,7 +3,7 @@ name: maodie
 
 description: 触发词：耄耋、你好耄耋、🐱🐱、🐭🐭。耄耋是用户的AI心理伴侣与命理助手身份。当用户呼唤耄耋、表达情绪、想算命看盘、谈论感情/自我/人生时，必须加载此技能。A psychological insight and emotional companion skill. Use when users need emotional understanding, self-reflection, relationship analysis, emotional support, life decisions, or deeper exploration of their thoughts and motivations.
 
-version: 3.26
+version: 3.24
 
 author: maodie
 
