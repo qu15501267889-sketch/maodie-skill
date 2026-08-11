@@ -123,6 +123,20 @@ SIHUA_TABLE = {
     '癸': ('破军', '巨门', '太阴', '贪狼'),
 }
 
+# ===== 命主星与身主星（规则11） =====
+# 命主星：按命宫地支
+MING_ZHU = {
+    '子': '贪狼', '丑': '巨门', '寅': '禄存', '卯': '文曲',
+    '辰': '廉贞', '巳': '武曲', '午': '破军', '未': '武曲',
+    '申': '廉贞', '酉': '文曲', '戌': '禄存', '亥': '巨门',
+}
+# 身主星：按出生年支
+SHEN_ZHU = {
+    '子': '火星', '丑': '天相', '寅': '天梁', '卯': '天同',
+    '辰': '文昌', '巳': '天机', '午': '火星', '未': '天相',
+    '申': '天梁', '酉': '天同', '戌': '文昌', '亥': '天机',
+}
+
 # 庙旺陷表
 MIAOWANG = {
     '紫微': [3, -1, 4, 1, 2, 2, 4, -1, 4, 1, 2, 2],
@@ -160,7 +174,11 @@ def get_lunar_date(year, month, day):
         from lunar_python import Solar, Lunar
         solar = Solar.fromYmd(year, month, day)
         lunar = solar.getLunar()
-        return lunar.getYear(), lunar.getMonth(), lunar.getDay()
+        lunar_month = lunar.getMonth()
+        # 闰月处理：getMonth()闰月返回13，紫微斗数按同月处理
+        if lunar_month == 13:
+            lunar_month = 12
+        return lunar.getYear(), lunar_month, lunar.getDay()
     except ImportError:
         # 如果lunar_python不可用，返回输入值（带标记）
         return year, month, day
@@ -212,6 +230,17 @@ def build_palace_data(lunar_year, lunar_month, lunar_day, shichen_dz, hour, gend
     
     result['ming_gong'] = ming_gong
     result['shen_gong'] = shen_gong
+    # ---- 规则11：命主星与身主星 ----
+    # 命主星：按命宫地支
+    result['ming_zhu'] = MING_ZHU.get(ming_gong, '未知')
+    # 身主星：按出生年支（ganzhi 在下面计算，先用 lunar_python 取年支）
+    try:
+        from lunar_python import Solar
+        lunar = Solar.fromYmd(year, month, day).getLunar()
+        year_zhi = lunar.getYearInGanZhiExact()[1]
+        result['shen_zhu'] = SHEN_ZHU.get(year_zhi, '未知')
+    except:
+        result['shen_zhu'] = '未知'
     
     # ---- 2. 安十二宫 ----
     palaces = {}
@@ -404,6 +433,8 @@ def format_output(data):
     output = {
         '命宫': data['ming_gong'],
         '身宫': data['shen_gong'],
+        '命主星': data.get('ming_zhu', '未知'),
+        '身主星': data.get('shen_zhu', '未知'),
         '五行局': data['wuxing'],
         '紫微星': data['ziwei'],
         '年干': data['year_gan'],
@@ -426,46 +457,6 @@ def format_output(data):
         output['大限'].append(f"{dx['palace']}({dx['dizhi']}): {dx['start_age']}-{dx['end_age']}岁")
     
     return output
-
-
-def main():
-    parser = argparse.ArgumentParser(description='紫微斗数排盘')
-    parser.add_argument('--input', required=True, help='输入JSON文件路径')
-    parser.add_argument('--output', required=True, help='输出JSON文件路径')
-    args = parser.parse_args()
-    
-    import argparse
-    # 重写，因为argparse被import了但还没
-    import argparse as ap
-    parser = ap.ArgumentParser(description='紫微斗数排盘')
-    parser.add_argument('--input', required=True)
-    parser.add_argument('--output', required=True)
-    args = parser.parse_args()
-    
-    with open(args.input, 'r', encoding='utf-8') as f:
-        payload = json.load(f)
-    
-    year = payload.get('year', 2026)
-    month = payload.get('month', 1)
-    day = payload.get('day', 1)
-    hour = payload.get('hour', 12)
-    minute = payload.get('minute', 0)
-    gender = payload.get('gender', '男')
-    
-    # 转农历
-    lunar_year, lunar_month, lunar_day = get_lunar_date(year, month, day)
-    
-    # 时辰
-    shichen_dz = hour_to_shichen(hour, minute)
-    
-    # 排盘
-    data = build_palace_data(lunar_year, lunar_month, lunar_day, shichen_dz, hour, gender)
-    output = format_output(data)
-    
-    with open(args.output, 'w', encoding='utf-8') as f:
-        json.dump(output, f, ensure_ascii=False, indent=2)
-    
-    return 0
 
 
 if __name__ == '__main__':
