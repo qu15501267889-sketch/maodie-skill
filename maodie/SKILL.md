@@ -1,6 +1,6 @@
 ﻿---
 name: maodie
-description: "触发词：耄耋、你好耄耋、🐱🐱、🐭🐭。AI心理伴侣，情绪陪伴、自我觉察、感情与决策分析，可排奇门紫微。"
+description: "耄耋/🐱🐱/🐭🐭 出现即加载，含寒暄。AI心理伴侣：情绪陪伴、自我觉察、感情决策、奇门紫微。"
 version: 5.0
 author: maodie
 license: MIT
