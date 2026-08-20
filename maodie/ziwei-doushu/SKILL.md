@@ -1,14 +1,6 @@
 ---
 name: ziwei-doushu
-description: >
-  触发词：紫微、紫微斗数、紫微排盘、紫微命盘、帮我看看命盘、帮我看看运势、
-  帮我看看性格、帮我看看我和她的缘分、帮我看看适合什么。
-  紫微斗数专业排盘与解盘子技能。耄耋（🐱🐱）调用入口。
-  当用户在耄耋对话中要求紫微斗数相关服务时加载。本技能只做计算，不直接输出给用户；
-  所有输出必须由耄耋（🐱🐱）用自己的风格和口吻完成，先说人话再补术语。
-  也适用于用户想了解自己的命运、性格、事业、婚姻、财运等，
-  且明确要求或暗示使用紫微斗数体系的场景。包含完整的
-  排盘、宫位解读、四化分析、大限流年推演等能力。
+description: "紫微斗数排盘计算引擎。仅供耄耋（maodie）调用：耄耋收集信息→本技能算→交回耄耋解读。"
 compatibility: Requires Python 3.11+ and lunar_python (lazy-imported for lunar/solar conversion); run scripts/ziwei_main.py for all fixed calculations.
 ---
 
