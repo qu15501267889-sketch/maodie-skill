@@ -1,5 +1,36 @@
-# 私人对话记录 - 不上传
-maodie/memory/sessions/
-maodie/memory/patterns.md
-maodie/memory/timeline.md
-maodie/memory/user_profile.md
+# ── 隐私：耄耋的记忆系统（整目录挡，只放行说明与模板）──
+maodie/assets/memory/*
+!maodie/assets/memory/README.md
+!maodie/assets/memory/user_profile.example.md
+!maodie/assets/memory/sessions/
+maodie/assets/memory/sessions/*
+!maodie/assets/memory/sessions/.gitkeep
+
+# ── 隐私：迁移前的旧记忆目录 ──
+maodie/memory/
+maodie/memory.migrated-*/
+
+# ── 隐私：排盘输入输出（含真实姓名与出生信息）──
+maodie/*/tmp/
+tmp/
+
+# ── 备份与临时文件 ──
+*.bak
+*.bak-*
+*.orig
+*.rej
+
+# ── 发布包（走 GitHub Release 附件，不进 git）──
+*.zip
+*.tar.gz
+*.bundle
+
+# ── Python ──
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# ── 系统 ──
+.DS_Store
+Thumbs.db
+desktop.ini
